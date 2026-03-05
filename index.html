@@ -4,427 +4,298 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Babe ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --deep: #0d0810;
-    --wine: #5c1a2e;
-    --rose: #c2185b;
-    --blush: #f48fb1;
-    --petal: #fce4ec;
-    --gold: #d4a843;
-    --cream: #fff8f0;
-  }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+--deep:#0d0810;
+--wine:#5c1a2e;
+--rose:#c2185b;
+--blush:#f48fb1;
+--petal:#fce4ec;
+--gold:#d4a843;
+}
 
-  body {
-    min-height: 100vh;
-    background: var(--deep);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    cursor: default;
-    font-family: 'Cormorant Garamond', serif;
-  }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-  /* ── CANVAS ── */
-  #canvas {
-    position: fixed; inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
+body{
+min-height:100vh;
+background:var(--deep);
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:'Cormorant Garamond',serif;
+overflow:hidden;
+padding:20px;
+}
 
-  /* ── AMBIENT GLOW ── */
-  .glow-orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
-    animation: drift 12s ease-in-out infinite;
-  }
-  .glow-orb.one {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(194,24,91,.25), transparent 70%);
-    top: -100px; left: -100px;
-    animation-delay: 0s;
-  }
-  .glow-orb.two {
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(92,26,46,.4), transparent 70%);
-    bottom: -80px; right: -80px;
-    animation-delay: -6s;
-  }
-  .glow-orb.three {
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(212,168,67,.12), transparent 70%);
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    animation-delay: -3s;
-  }
-  @keyframes drift {
-    0%, 100% { transform: translate(0,0) scale(1); }
-    33% { transform: translate(30px,-20px) scale(1.05); }
-    66% { transform: translate(-20px,30px) scale(.95); }
-  }
+/* CARD */
 
-  /* ── OUTER WRAPPER ── */
-  .scene {
-    position: relative;
-    z-index: 10;
-    width: min(480px, 94vw);
-    animation: sceneIn 1.2s cubic-bezier(.22,1,.36,1) both;
-  }
-  @keyframes sceneIn {
-    from { opacity: 0; transform: translateY(40px) scale(.96); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-  }
+.scene{
+width:100%;
+max-width:520px;
+}
 
-  /* ── CARD ── */
-  .card {
-    position: relative;
-    background: linear-gradient(160deg, #1a0d14 0%, #120a10 60%, #0d0810 100%);
-    border: 1px solid rgba(212,168,67,.2);
-    border-radius: 24px;
-    padding: 3rem 2.8rem 2.5rem;
-    text-align: center;
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.04),
-      0 30px 80px rgba(0,0,0,.7),
-      inset 0 1px 0 rgba(255,255,255,.06);
-    overflow: hidden;
-  }
+.card{
+background:linear-gradient(160deg,#1a0d14,#120a10,#0d0810);
+border-radius:22px;
+padding:3rem 2.5rem;
+border:1px solid rgba(212,168,67,.25);
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+text-align:center;
+}
 
-  /* inner shimmer border */
-  .card::before {
-    content: '';
-    position: absolute; inset: 0;
-    border-radius: 24px;
-    background: linear-gradient(135deg,
-      rgba(212,168,67,.08) 0%,
-      transparent 40%,
-      transparent 60%,
-      rgba(194,24,91,.06) 100%
-    );
-    pointer-events: none;
-  }
+/* TITLE */
 
-  /* top ornament */
-  .ornament {
-    position: relative;
-    margin-bottom: 1.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .7rem;
-  }
-  .ornament-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212,168,67,.4), transparent);
-  }
-  .ornament-diamond {
-    width: 8px; height: 8px;
-    background: var(--gold);
-    transform: rotate(45deg);
-    opacity: .7;
-  }
+.greeting{
+font-family:'Cinzel',serif;
+letter-spacing:.35em;
+font-size:.75rem;
+color:var(--gold);
+margin-bottom:10px;
+text-transform:uppercase;
+}
 
-  /* ── HEADING ── */
-  .greeting {
-    font-family: 'Cinzel', serif;
-    font-size: .72rem;
-    letter-spacing: .35em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: .6rem;
-    opacity: .8;
-  }
-  .main-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.4rem, 8vw, 3.2rem);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--petal);
-    line-height: 1.1;
-    margin-bottom: .3rem;
-    text-shadow: 0 0 40px rgba(244,143,177,.3);
-  }
-  .name-highlight {
-    font-style: normal;
-    font-weight: 400;
-    color: var(--blush);
-    display: block;
-  }
+.main-title{
+font-size:3rem;
+font-weight:300;
+font-style:italic;
+color:var(--petal);
+line-height:1.2;
+}
 
-  /* ── DIVIDER ── */
-  .divider {
-    display: flex; align-items: center; justify-content: center; gap: .5rem;
-    margin: 1.6rem 0;
-  }
-  .divider span { color: var(--rose); font-size: 1rem; }
-  .divider-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(194,24,91,.4); }
+.name-highlight{
+display:block;
+font-style:normal;
+color:var(--blush);
+margin-top:5px;
+}
 
-  /* ── LETTER ── */
-  .letter {
-    font-size: 1.05rem;
-    color: rgba(252,228,236,.75);
-    line-height: 1.9;
-    font-weight: 300;
-    font-style: italic;
-    position: relative;
-  }
-  .letter strong {
-    color: var(--blush);
-    font-style: normal;
-    font-weight: 400;
-  }
-  .letter .big-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    line-height: 0;
-    vertical-align: -.6em;
-    color: var(--rose);
-    opacity: .25;
-    margin-right: .1em;
-  }
+/* LETTER */
 
-  /* ── BUTTON ── */
-  .btn-wrap {
-    margin: 2rem 0 0;
-  }
-  .surprise-btn {
-    position: relative;
-    padding: .9rem 2.4rem;
-    border: 1px solid rgba(212,168,67,.35);
-    border-radius: 50px;
-    background: transparent;
-    color: var(--gold);
-    font-family: 'Cinzel', serif;
-    font-size: .75rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all .4s ease;
-    overflow: hidden;
-  }
-  .surprise-btn::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(194,24,91,0), rgba(194,24,91,0));
-    transition: background .4s ease;
-    border-radius: 50px;
-  }
-  .surprise-btn:hover {
-    border-color: rgba(194,24,91,.6);
-    color: var(--petal);
-    box-shadow: 0 0 30px rgba(194,24,91,.25), inset 0 0 20px rgba(194,24,91,.1);
-    transform: translateY(-2px);
-  }
-  .surprise-btn:hover::before {
-    background: linear-gradient(135deg, rgba(194,24,91,.15), rgba(92,26,46,.2));
-  }
-  .surprise-btn:active { transform: translateY(0); }
-  .btn-icon { margin-right: .4rem; transition: transform .3s; }
-  .surprise-btn:hover .btn-icon { transform: scale(1.3); }
+.letter{
+margin-top:25px;
+font-size:1.1rem;
+line-height:1.8;
+color:rgba(252,228,236,.8);
+font-style:italic;
+}
 
-  /* ── REVEAL MESSAGE ── */
-  #reveal {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .8s cubic-bezier(.22,1,.36,1), opacity .6s ease;
-    opacity: 0;
-  }
-  #reveal.open {
-    max-height: 300px;
-    opacity: 1;
-  }
-  .reveal-inner {
-    margin-top: 1.8rem;
-    padding: 1.5rem;
-    border: 1px solid rgba(212,168,67,.15);
-    border-radius: 16px;
-    background: rgba(194,24,91,.05);
-  }
-  .reveal-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--blush);
-    line-height: 1.7;
-  }
-  .reveal-sign {
-    margin-top: .8rem;
-    font-family: 'Cinzel', serif;
-    font-size: .7rem;
-    letter-spacing: .2em;
-    color: rgba(212,168,67,.6);
-    text-transform: uppercase;
-  }
+.letter strong{
+color:var(--blush);
+font-style:normal;
+}
 
-  /* ── FLOATING PETALS / PARTICLES ── */
-  .particle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 1;
-    animation: rise linear infinite;
-    opacity: 0;
-    user-select: none;
-  }
-  @keyframes rise {
-    0%   { transform: translateY(110vh) rotate(0deg) scale(1); opacity: 0; }
-    5%   { opacity: 1; }
-    90%  { opacity: .6; }
-    100% { transform: translateY(-10vh) rotate(720deg) scale(.5); opacity: 0; }
-  }
+/* BUTTON */
 
-  /* ── BOTTOM ORNAMENT ── */
-  .bottom-ornament {
-    margin-top: 1.8rem;
-    display: flex; align-items: center; justify-content: center; gap: .5rem;
-  }
-  .bottom-ornament .line {
-    flex: 1; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(194,24,91,.2), transparent);
-  }
-  .bottom-ornament .hearts { color: var(--rose); font-size: .7rem; letter-spacing: .3em; }
+.btn-wrap{
+margin-top:30px;
+}
 
-  /* ── PULSE HEART ── */
-  .pulse-heart {
-    display: inline-block;
-    animation: heartbeat 1.4s ease-in-out infinite;
-  }
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.25); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
-    60% { transform: scale(1); }
-  }
+.surprise-btn{
+padding:14px 28px;
+border-radius:40px;
+border:1px solid rgba(212,168,67,.4);
+background:transparent;
+color:var(--gold);
+font-family:'Cinzel',serif;
+letter-spacing:.15em;
+cursor:pointer;
+transition:.3s;
+}
+
+.surprise-btn:hover{
+background:rgba(194,24,91,.15);
+color:white;
+transform:translateY(-2px);
+}
+
+/* REVEAL */
+
+#reveal{
+max-height:0;
+overflow:hidden;
+opacity:0;
+transition:all .6s ease;
+}
+
+#reveal.open{
+max-height:300px;
+opacity:1;
+}
+
+.reveal-inner{
+margin-top:25px;
+padding:20px;
+border-radius:15px;
+background:rgba(194,24,91,.08);
+border:1px solid rgba(212,168,67,.2);
+}
+
+.reveal-text{
+font-size:1.3rem;
+color:var(--blush);
+font-style:italic;
+}
+
+.reveal-sign{
+margin-top:10px;
+font-size:.75rem;
+letter-spacing:.2em;
+font-family:'Cinzel',serif;
+color:rgba(212,168,67,.7);
+}
+
+/* PARTICLES */
+
+.particle{
+position:fixed;
+pointer-events:none;
+animation:rise linear infinite;
+}
+
+@keyframes rise{
+0%{transform:translateY(110vh) rotate(0deg);opacity:0;}
+10%{opacity:1;}
+100%{transform:translateY(-10vh) rotate(360deg);opacity:0;}
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE DESIGN */
+/* ========================= */
+
+@media (max-width:768px){
+
+.card{
+padding:2.2rem 1.8rem;
+}
+
+.main-title{
+font-size:2.3rem;
+}
+
+.letter{
+font-size:1rem;
+line-height:1.7;
+}
+
+.reveal-text{
+font-size:1.15rem;
+}
+
+.surprise-btn{
+padding:12px 22px;
+font-size:.8rem;
+}
+
+}
+
+@media (max-width:420px){
+
+.main-title{
+font-size:2rem;
+}
+
+.letter{
+font-size:.95rem;
+}
+
+.card{
+padding:2rem 1.4rem;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
-<div class="glow-orb one"></div>
-<div class="glow-orb two"></div>
-<div class="glow-orb three"></div>
-
 <div class="scene">
-  <div class="card">
+<div class="card">
 
-    <div class="ornament">
-      <div class="ornament-line"></div>
-      <div class="ornament-diamond"></div>
-      <div class="ornament-line"></div>
-    </div>
+<p class="greeting">A love letter</p>
 
-    <p class="greeting">A love letter</p>
+<h1 class="main-title">
+Hi, Babe
+<span class="name-highlight">Sosa Mala 🌹</span>
+</h1>
 
-    <h1 class="main-title">
-      Hi, Babe
-      <span class="name-highlight">Sosa Mala 🌹</span>
-    </h1>
+<p class="letter">
+My sweet love, every morning I wake up grateful that you exist in my world.
+You are my <strong>calm</strong>, my <strong>joy</strong>,
+my favourite person — always and without question.<br><br>
 
-    <div class="divider">
-      <div class="divider-dot"></div>
-      <span><span class="pulse-heart">❤️</span></span>
-      <div class="divider-dot"></div>
-    </div>
+No words are ever quite enough, but know this:
+you make everything <strong>more beautiful</strong>
+simply by being you. 💕
+</p>
 
-    <p class="letter">
-      <span class="big-quote">"</span>My sweet love,
-      every morning I wake up grateful that you exist in my world.
-      You are my <strong>calm</strong>, my <strong>joy</strong>,
-      my favourite person — always and without question.<br><br>
-      No words are ever quite enough, but know this:
-      you make everything <strong>more beautiful</strong>
-      simply by being you. 💕
-    </p>
+<div class="btn-wrap">
+<button class="surprise-btn" onclick="openSurprise()">✨ Open Your Surprise</button>
+</div>
 
-    <div class="btn-wrap">
-      <button class="surprise-btn" onclick="openSurprise(this)">
-        <span class="btn-icon">✨</span> Open Your Surprise
-      </button>
-    </div>
+<div id="reveal">
+<div class="reveal-inner">
 
-    <div id="reveal">
-      <div class="reveal-inner">
-        <p class="reveal-text">
-          Babe, I love you — not just today,<br>
-          but every single day, forever. 💖
-        </p>
-        <p class="reveal-sign">— From Your Girl, always &amp; only yours 🌸</p>
-      </div>
-    </div>
+<p class="reveal-text">
+Babe, I love you — not just today,<br>
+but every single day, forever. 💖
+</p>
 
-    <div class="bottom-ornament">
-      <div class="line"></div>
-      <span class="hearts">♥ ♥ ♥</span>
-      <div class="line"></div>
-    </div>
+<p class="reveal-sign">
+— From Your Girl, always & only yours 🌸
+</p>
 
-  </div>
+</div>
+</div>
+
+</div>
 </div>
 
 <script>
-  // ── Floating particles
-  const EMOJIS = ['❤️','🌹','💕','✨','🌸','💖','🥀','💗'];
-  function spawnParticle() {
-    const el = document.createElement('div');
-    el.className = 'particle';
-    el.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-    const size = Math.random() * 18 + 10;
-    const dur  = Math.random() * 10 + 8;
-    const del  = Math.random() * 6;
-    el.style.cssText = `
-      left: ${Math.random() * 100}vw;
-      font-size: ${size}px;
-      animation-duration: ${dur}s;
-      animation-delay: ${del}s;
-    `;
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), (dur + del) * 1000);
-  }
-  setInterval(spawnParticle, 600);
-  // seed a few immediately
-  for (let i = 0; i < 6; i++) spawnParticle();
 
-  // ── Surprise reveal
-  let opened = false;
-  function openSurprise(btn) {
-    if (opened) return;
-    opened = true;
-    btn.style.opacity = '0';
-    btn.style.transform = 'translateY(8px)';
-    btn.style.pointerEvents = 'none';
-    setTimeout(() => {
-      document.getElementById('reveal').classList.add('open');
-      burst();
-    }, 300);
-  }
+const EMOJIS=['❤️','🌹','💕','✨','🌸','💖'];
 
-  // mini burst of hearts on reveal
-  function burst() {
-    for (let i = 0; i < 20; i++) {
-      setTimeout(() => {
-        const el = document.createElement('div');
-        el.className = 'particle';
-        el.textContent = '❤️';
-        const size = Math.random() * 22 + 12;
-        el.style.cssText = `
-          left: ${30 + Math.random() * 40}vw;
-          font-size: ${size}px;
-          animation-duration: ${Math.random() * 4 + 3}s;
-          animation-delay: 0s;
-        `;
-        document.body.appendChild(el);
-        setTimeout(() => el.remove(), 7000);
-      }, i * 80);
-    }
-  }
+function spawnParticle(){
+
+const el=document.createElement('div');
+
+el.className='particle';
+
+el.textContent=EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+
+const size=Math.random()*20+12;
+
+const dur=Math.random()*8+6;
+
+el.style.cssText=`
+left:${Math.random()*100}vw;
+font-size:${size}px;
+animation-duration:${dur}s;
+`;
+
+document.body.appendChild(el);
+
+setTimeout(()=>el.remove(),dur*1000);
+
+}
+
+setInterval(spawnParticle,700);
+
+function openSurprise(){
+
+document.getElementById('reveal').classList.add('open');
+
+}
+
 </script>
+
 </body>
 </html>
