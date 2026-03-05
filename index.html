@@ -238,7 +238,7 @@ simply by being you. 💕
 </p>
 
 <div class="btn-wrap">
-<button class="surprise-btn" onclick="openSurprise()">✨ Open Your Surprise</button>
+<button id="surpriseBtn" class="surprise-btn" onclick="openSurprise()">✨ Open Your Surprise</button>
 </div>
 
 <div id="reveal">
@@ -292,6 +292,8 @@ setInterval(spawnParticle,700);
 function openSurprise(){
 
 document.getElementById('reveal').classList.add('open');
+
+document.getElementById('surpriseBtn').style.display = "none";
 
 }
 
